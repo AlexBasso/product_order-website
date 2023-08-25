@@ -1,0 +1,53 @@
+[
+  {
+    "model": "shopapp.product",
+    "pk": 1,
+    "fields": {
+      "name": "Laptop",
+      "description": "some description",
+      "price": "1999.00",
+      "discount": 0,
+      "created_at": "2022-07-24T11:20:36.181Z",
+      "archived": true
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 2,
+    "fields": {
+      "name": "Desktop (new)",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie purus libero, feugiat cursus ligula placerat sagittis. In tristique condimentum nibh, eget pulvinar justo hendrerit vitae. Cras faucibus metus quam, at congue lacus varius id. Sed dapibus quam neque, id efficitur justo cursus ac. Phasellus in felis bibendum, tincidunt quam non, scelerisque mauris. Maecenas nec bibendum diam. Aenean at vestibulum diam. Cras ac dolor placerat, feugiat libero venenatis, aliquet eros. Nam eget vehicula nisl. Nulla dolor nulla, porta non purus at, suscipit imperdiet eros. Nulla sed tellus libero. Donec tempor tortor at dui interdum luctus. Nam porta diam ut velit luctus tempor. Maecenas tristique a quam eu lobortis.\r\nPhone: +123456",
+      "price": "2399.00",
+      "discount": 15,
+      "created_at": "2022-07-24T11:20:36.181Z",
+      "archived": false
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 3,
+    "fields": {
+      "name": "Smartphone",
+      "description": "",
+      "price": "987.00",
+      "discount": 25,
+      "created_at": "2022-07-24T11:20:36.181Z",
+      "archived": true
+    }
+  },
+  {
+    "model": "shopapp.order",
+    "pk": 1,
+    "fields": {
+      "delivery_address": "ul Pupkina, d 8",
+      "promocode": "SALE123",
+      "created_at": "2022-07-24T11:53:51.870Z",
+      "user": 1,
+      "products": [
+        2,
+        1,
+        3
+      ]
+    }
+  }
+]

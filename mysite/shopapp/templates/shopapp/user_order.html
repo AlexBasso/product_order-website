@@ -1,0 +1,42 @@
+{% extends 'shopapp/base.html' %}
+{% load cache %}
+
+{% block title %}
+    {{ owner }}'s Orders
+{% endblock %}
+
+{% block body %}
+    <br>
+    {% if orders %}
+        <h3>{{ owner }} has following orders:</h3>
+        {% with total=owner.pk %}
+            {% cache 30 owner_orders total %}
+                {% for order in orders %}
+                    <div>
+                        <p>Order #{{ order.pk }}:</p>
+                        <p>
+                            Delivery address: {{ order.delivery_address }}
+                        </p>
+                        <p>Promo code:
+                            <cod>{{ order.promo_code }}</cod>
+                        </p>
+                        <div>
+                            Products in order:
+                            <ul>
+                                {% for product in order.products.all %}
+                                    <li>{{ product.name }} for ${{ product.price }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <br>
+                    </div>
+                {% endfor %}
+                <a href="{% url 'shopapp:user_orders_list_export' owner.pk %}">Export Orders</a>
+            {% endcache %}
+        {% endwith %}
+    {% else %}
+        <h4>{{ owner }} made no orders yet</h4>
+    {% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'mainpage:index' %}">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'shopapp:index' %}">Shop</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Request Data App
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{% url 'requestdataapp:user-form' %}">Bio</a>
+                    <a class="dropdown-item" href="{% url 'requestdataapp:file-upload' %}">Upload</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    EndPoints
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{% url 'shopapp:index' %}">Shop Index</a>
+                    <a class="dropdown-item" href="{% url 'shopapp:products_list' %}">Product list</a>
+                    <a class="dropdown-item" href="{% url 'shopapp:product_create' %}">Product Create</a>
+                    <a class="dropdown-item" href="{% url 'shopapp:orders_list' %}">Order list</a>
+                    <a class="dropdown-item" href="{% url 'shopapp:order_create' %}">Order create </a>
+                    <a class="dropdown-item" href="{% url 'requestdataapp:user-form' %}">Bio</a>
+                    <a class="dropdown-item" href="{% url 'requestdataapp:file-upload' %}">Upload</a>
+                    <a class="dropdown-item" href="{% url 'myauth:login' %}">LogIn</a>
+                    <a class="dropdown-item" href="{% url 'myauth:logout' %}">LogOut</a>
+                    <a class="dropdown-item" href="{% url 'myauth:about-me' %}">About me</a>
+                    <a class="dropdown-item" href="{% url 'blogapp:articles' %}">Blog App</a>
+                    <a class="dropdown-item" href="{% url 'myauth:cookie-get' %}">Cookie Get</a>
+                    <a class="dropdown-item" href="{% url 'myauth:cookie-set' %}">Cookie Set</a>
+                    <a class="dropdown-item" href="{% url 'myauth:session-get' %}">Session Get</a>
+                    <a class="dropdown-item" href="{% url 'myauth:session-set' %}">Session Set</a>
+                    <a class="dropdown-item" href="{% url 'myauth:register' %}">Register</a>
+                    <a class="dropdown-item" href="{% url 'admin:index' %}">Admin</a>
+                    <a class="dropdown-item" href="{% url 'myauth:profiles-list' %}">Profile List</a>
+                    <a class="dropdown-item" href="{% url 'myapiapp:hello' %}">API Hello</a>
+                    <a class="dropdown-item" href="{% url 'shopapp:api-root' %}">API Product/Order</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

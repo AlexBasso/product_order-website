@@ -1,0 +1,44 @@
+{% extends 'shopapp/base.html' %}
+
+{% block title %}
+    Orders list
+{% endblock %}
+
+{% block body %}
+    <h1>Orders:</h1>
+    {% if orders %}
+        <div>
+            {% for order in orders %}
+                <div>
+                    <p>Order by {% firstof order.user.first_name order.user.username %}</p>
+                    <p>Promo code:
+                        <cod>{{ order.promo_code }}</cod>
+                    </p>
+                    <p>Delivery address: {{ order.delivery_address }}</p>
+                    <div>
+                        Product in order
+                        <ul>
+                            {% for product in order.products.all %}
+                                <li>{{ product.name }} for ${{ product.price }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+
+    {% else %}
+        <h3>No orders yet</h3>
+    {% endif %}
+    <br><br>
+
+    <div>
+        <a href="{% url 'shopapp:order_create' %}"> Create Order</a>
+    </div>
+    <br>
+    <div>
+        <a href="{% url 'shopapp:index' %}"> Go back to shop-index</a>
+    </div>
+    <br>
+{% endblock %}

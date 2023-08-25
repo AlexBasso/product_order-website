@@ -1,0 +1,57 @@
+{% extends 'shopapp/base.html' %}
+{% load i18n %}
+
+{% block title %}
+    {% translate 'Product' %} #{{ product.pk }}
+{% endblock %}
+
+{% block body %}
+    <h1>{% translate 'Product' %} <strong>{{ product.name }}</strong></h1>
+    <div>
+        <div>Description: <em>{{ product.description }}</em></div>
+        <div>Price: {{ product.price }}</div>
+        <div>Discount: {{ product.discount }}</div>
+        <div>Archived: {{ product.archived }}</div>
+
+        {% if product.preview %}
+            <img src="{{ product.preview.url }}" alt="{{ product.preview.name }}">
+        {% endif %}
+
+        {% if product.images.all %}
+            <h3>
+                {% blocktranslate count img_count=product.images.all|length %}
+                    There is only one image:
+                    {% plural %}
+                    There are {{ img_count }} images:
+                {% endblocktranslate %}
+            </h3>
+
+            <div>
+                {% for img in product.images.all %}
+                    <div>
+                        <img src="{{ img.image.url }}" alt="img.image.name">
+                        <div>{{ img.description }}</div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        {% else %}
+            <br>
+            <div>{% translate 'No images uploaded yet' %}</div>
+        {% endif %}
+    </div>
+    <br><br>
+    {% url 'shopapp:product_update' pk=product.pk as prod_update %}
+    {% url 'shopapp:product_delete' pk=product.pk as prod_del %}
+    {% url 'shopapp:products_list' as prod_list %}
+    {% blocktranslate %}
+        <div><a href="{{ prod_update }}">Update product</a></div>
+        <br>
+        <div><a href="{{ prod_del }}">Archive product</a></div>
+        <br>
+        <div>
+            <a href="{{ prod_list }}"> Back to products list</a>
+        </div>
+        <br>
+    {% endblocktranslate %}
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'shopapp/base.html' %}
+{% load cache %}
+
+{% block title %}
+    Shop Index
+{% endblock %}
+
+{% block body %}
+    <h1>Hello from Shop index!</h1>
+    <div>
+        Time running: {{ time_running }}
+    </div>
+    <div>
+        <ul>
+            {% for name, price in products %}
+                <li>{{ name|capfirst }} ({{ name|length }}) for ${{ price }}</li>
+                {% if name|length_is:'7' %}
+                    <span>Lucky product!</span>
+                {% endif %}
+            {% empty %}
+                No products here
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <strong>
+            You have {{ items }} class{{ items|pluralize:"es" }}<br>
+            You have {{ items }} cherr{{ items|pluralize:"y,ies" }}
+        </strong>
+    </div>
+
+    {% cache 100 lorem %}
+        <div>
+            {% lorem 3 p random %}
+        </div>
+    {% endcache %}
+
+    <br><br>
+    <div>
+        <a href="{% url 'shopapp:products_list' %}">Go to product list</a>
+    </div>
+    <br>
+    <div>
+        <a href="{% url 'shopapp:orders_list' %}">Go to order list</a>
+    </div>
+    <br>
+{% endblock %}
