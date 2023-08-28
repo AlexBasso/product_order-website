@@ -14,13 +14,14 @@ from os import getenv
 from pathlib import Path
 import logging.config
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 from django.conf.global_settings import LOGIN_REDIRECT_URL
 from django.urls import reverse_lazy
-
 from django.utils.translation import gettext_lazy as lazy
 
 import sentry_sdk
+from dotenv import load_dotenv
+
+load_dotenv()
 
 sentry_sdk.init(
     dsn="https://c077db7117f24cc0ba6445268939b3b1@o4505448644739072.ingest.sentry.io/4505448650309632",
